@@ -11,8 +11,8 @@ module.exports = (VueInstance = VueRequire) => {
         this.$emit('send', message);
       }
     },
-    template: 
-    `
+    template:
+      `
       <div class="chat">
         <div class="chat-msgs">
           <b-tabs v-model="activeTab">
@@ -25,4 +25,4 @@ module.exports = (VueInstance = VueRequire) => {
       </div>
     `
   });
-} 
+}

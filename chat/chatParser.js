@@ -12,7 +12,7 @@ class ChatParser {
       return message;
     }
 
-    switch(this.getCommand(message)) {
+    switch (this.getCommand(message)) {
       case 'roll': {
         return this.parseRoll(message);
       }
@@ -59,7 +59,7 @@ class ChatParser {
     const diceRange = Number(toRoll[1]);
 
     let total = 0;
-    for (let i=0; i<numberOfDices; i++) {
+    for (let i = 0; i < numberOfDices; i++) {
       total += this.getDiceRandom(diceRange);
     }
 

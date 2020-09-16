@@ -13,8 +13,8 @@ module.exports = (VueInstance = VueRequire) => {
         this.$emit('send', chatParser.parseMessage(this.message));
       }
     },
-    template: 
-    `
+    template:
+      `
       <div class="chat-send">
         <b-field>
           <b-input v-model="message"></b-input>
@@ -23,4 +23,4 @@ module.exports = (VueInstance = VueRequire) => {
       </div>
     `
   });
-} 
+}
