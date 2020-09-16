@@ -1,10 +1,25 @@
 {
-  "name": "componentes-rpg",
-  "version": "1.0.2",
+  "name": "@mightyroll/mighty-tools",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
+  "devDependencies": {
+    "@vue/test-utils": "^1.1.0",
+    "chai": "latest",
+    "jsdom": "latest",
+    "jsdom-global": "latest",
+    "mocha": "latest",
+    "vue": "^2.6.12",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive"
+  },
+  "repository": {
+    "url": "https://github.com/MightyRoll/MightyTools"
   },
   "author": "",
   "license": "ISC"

@@ -1,11 +1,13 @@
 const state = require('./state');
 const events = require('./events');
-const chatItem = require('./chat-item');
-const chatSend = require('./chat-send');
+const chat = require('./chat/chat');
+const chatItem = require('./chat/chatItem');
+const chatSend = require('./chat/chatSend');
 
 exports.state = state;
 exports.events = events;
 exports.initComponents = () => {
+  chat();
   chatItem();
   chatSend();
 }
