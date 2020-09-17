@@ -1,16 +1,4 @@
-class Message {
-  /**
-   * 
-   * @param {string} message 
-   * @param {string} nickname 
-   * @param {string} type 
-   */
-  constructor(message, nickname, type) {
-    this.message = message;
-    this.nickname = nickname;
-    this.type = type;
-  }
-}
+const { Message } = require("../utils/helperClasses");
 
 class MessageState {
   #messages;
@@ -60,6 +48,5 @@ class MessageState {
 }
 
 module.exports = {
-  Message,
   MessageState
 };

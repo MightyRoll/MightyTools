@@ -1,4 +1,4 @@
-const VueRequire = typeof Vue !== 'undefined' ? Vue : null;
+const VueRequire = typeof Vue !== 'undefined' ? Vue : require('Vue');
 
 module.exports = (VueInstance = VueRequire) => {
   return VueInstance.component('chat-item', {
