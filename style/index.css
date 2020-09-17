@@ -1,0 +1,15 @@
+.chat {
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-msgs {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.chat-item {
+  display: flex;
+  padding: 2px 15px;
+}
