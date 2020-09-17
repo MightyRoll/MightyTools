@@ -15,7 +15,7 @@ describe('chat', () => {
       wrapper.vm.send();
 
       expect(wrapper.emitted().send.length).to.equal(1);
-      expect(wrapper.emitted().send[0]).to.eql(['Hello, World!']);
+      expect(wrapper.emitted().send[0]).to.eql([{ message: 'Hello, World!' }]);
     });
 
     it('should parse the message rolling the dice', async () => {
@@ -26,7 +26,8 @@ describe('chat', () => {
       wrapper.vm.send();
 
       expect(wrapper.emitted().send.length).to.equal(1);
-      expect(wrapper.emitted().send[0][0]).to.be.within(1, 6);
+      const result = wrapper.emitted().send[0][0];
+      expect(Number(result.message)).to.be.within(1, 6);
     });
   });
 });

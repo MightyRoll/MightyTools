@@ -1,3 +1,6 @@
+const { playerState } = require("../state/playerState");
+const { MessagePack } = require("../utils/helperClasses");
+
 /**
  * ChatParser
  */
@@ -9,15 +12,18 @@ class ChatParser {
   parseMessage(message) {
     message = message.trim();
     if (!this.isCommand(message)) {
-      return message;
+      return new MessagePack(message);
     }
 
     switch (this.getCommand(message)) {
       case 'roll': {
         return this.parseRoll(message);
       }
+      case 'whisper': {
+        return this.parseWhisper(message);
+      }
       default: {
-        return message;
+        return new MessagePack(message);
       }
     }
   }
@@ -48,7 +54,8 @@ class ChatParser {
 
   /**
    * Parse the roll command, returning the value of the dice rolled 
-   * @param {string} message 
+   * @param {string} message
+   * @returns {MessagePack}
    */
   parseRoll(message) {
     message = message.split(' ').filter(val => val !== '');
@@ -63,7 +70,31 @@ class ChatParser {
       total += this.getDiceRandom(diceRange);
     }
 
-    return total;
+    const messagePack = new MessagePack(total.toString());
+    messagePack.type = 'roll';
+
+    return messagePack;
+  }
+
+  /**
+   * 
+   * @param {string} message 
+   * @returns {MessagePack}
+   */
+  parseWhisper(message) {
+    message = message.split(' ').filter(val => val !== '');
+
+    const destination = message[1];
+
+    if (!playerState.isPlayer(destination)) {
+      const messagePack = this.parseMessage(message.slice(1).join(' '));
+      messagePack.destination = playerState.getUserPlayerName();
+      return messagePack;
+    } else {
+      const messagePack = this.parseMessage(message.slice(2).join(' '));
+      messagePack.destination = destination;
+      return messagePack;
+    }
   }
 }
 

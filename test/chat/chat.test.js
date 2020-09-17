@@ -18,7 +18,7 @@ describe('chat', () => {
       sendWrapper.vm.send();
 
       expect(wrapper.emitted().send.length).to.equal(1);
-      expect(wrapper.emitted().send[0]).to.eql(['Hello, World!']);
+      expect(wrapper.emitted().send[0]).to.eql([{ message: 'Hello, World!' }]);
     });
   });
 });
